@@ -1,5 +1,9 @@
 FROM postgres:9.4
 
+ENV http_proxy 'http://proxy.phl.sap.corp:8080'
+ENV https_proxy 'http://proxy.phl.sap.corp:8080'
+ENV no_proxy 'localhost,sap.corp,mo.sap.corp,cc.mo.sap.corp,sap.biz,cloud.sap,sap,cc.ondemand.com,moo-repo,moo-repo.wdf.sap.corp,repo,repo.wdf.sap.corp,169.254.169.254,mo-d4c8c14d0,127.0.0.1,10.9.43.64'
+
 RUN apt-get update \
     && apt-get install -y python-dev lzop pv daemontools curl build-essential \
     && curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | python \
